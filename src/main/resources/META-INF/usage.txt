@@ -1,0 +1,44 @@
+
+# Javadoc Docent for Maven Plugin
+# Usage "mvn com.yookue.mavenplugin:javadoc-docent-maven-plugin:help"
+# See "https://maven.apache.org/plugins/maven-javadoc-plugin/examples/alternate-doclet.html"
+# See "https://maven.apache.org/plugins/maven-javadoc-plugin/examples/taglet-configuration.html"
+# ==============================================================================================
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>LATEST</version>
+                <configuration>
+                    <taglets>
+                        <taglet>
+                            <tagletClass>com.yookue.mavenplugin.javadocdocent.taglet.AttentionTaglet</tagletClass>
+                        </taglet>
+                        <taglet>
+                            <tagletClass>com.yookue.mavenplugin.javadocdocent.taglet.DtddTaglet</tagletClass>
+                        </taglet>
+                        <taglet>
+                            <tagletClass>com.yookue.mavenplugin.javadocdocent.taglet.ReferenceTaglet</tagletClass>
+                        </taglet>
+                        <taglet>
+                            <tagletClass>com.yookue.mavenplugin.javadocdocent.taglet.TodoTaglet</tagletClass>
+                        </taglet>
+                        <taglet>
+                            <tagletClass>com.yookue.mavenplugin.javadocdocent.taglet.UrlTaglet</tagletClass>
+                        </taglet>
+                        <taglet>
+                            <tagletClass>com.yookue.mavenplugin.javadocdocent.taglet.WarningTaglet</tagletClass>
+                        </taglet>
+                    </taglets>
+                    <tagletArtifact>
+                        <groupId>com.yookue.mavenplugin</groupId>
+                        <artifactId>javadoc-docent-maven-plugin</artifactId>
+                        <version>LATEST</version>
+                    </tagletArtifact>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
