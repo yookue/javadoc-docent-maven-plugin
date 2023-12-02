@@ -55,9 +55,9 @@ import com.yookue.mavenplugin.javadocdocent.util.ResourceBundleUtils;
  */
 @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})
 public class WarningTaglet extends AbstractBlockTaglet {
-    private static final String TAG_NAME = "warning";    //$NON-NLS-1$
-    private static final String TAG_TITLE = "Warning:";    //$NON-NLS-1$
-    private static final String TR_TEMPLATE = "<tr><td style=\"color:#fff;background-color:#f1c500\">%s</td></tr>";    //$NON-NLS-1$
+    private static final String TAG_NAME = "warning";    // $NON-NLS-1$
+    private static final String TAG_TITLE = "Warning:";    // $NON-NLS-1$
+    private static final String TR_TEMPLATE = "<tr><td style=\"color:#fff;background-color:#f1c500\">%s</td></tr>";    // $NON-NLS-1$
 
     /**
      * {@inheritDoc}
@@ -89,7 +89,7 @@ public class WarningTaglet extends AbstractBlockTaglet {
         if (!tbody.hasContent()) {
             return null;
         }
-        String title = ResourceBundleUtils.getTagletMessage(JavadocDocletUtils.getHtmlDocletLocale(), "Taglet.warning", TAG_TITLE);    //$NON-NLS-1$
+        String title = ResourceBundleUtils.getTagletMessage(JavadocDocletUtils.getHtmlDocletLocale(), "Taglet.warning", TAG_TITLE);    // $NON-NLS-1$
         ContentBuilder builder = JavadocContentUtils.dtSpanDdTable(title, tbody, TAG_NAME);
         return builder == null ? null : builder.toString();
     }

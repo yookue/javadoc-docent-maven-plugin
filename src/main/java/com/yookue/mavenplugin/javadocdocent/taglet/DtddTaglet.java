@@ -48,7 +48,7 @@ import com.yookue.mavenplugin.javadocdocent.util.JavadocContentUtils;
  */
 @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})
 public class DtddTaglet extends AbstractInlineTaglet {
-    private static final String TAG_NAME = "dtdd";    //$NON-NLS-1$
+    private static final String TAG_NAME = "dtdd";    // $NON-NLS-1$
 
     /**
      * {@inheritDoc}

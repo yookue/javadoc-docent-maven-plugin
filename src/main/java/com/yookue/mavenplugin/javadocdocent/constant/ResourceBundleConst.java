@@ -25,6 +25,6 @@ package com.yookue.mavenplugin.javadocdocent.constant;
  */
 @SuppressWarnings("unused")
 public abstract class ResourceBundleConst {
-    public static final String ENTRANCE = "lang/maven";    //$NON-NLS-1$
-    public static final String TAGLET_MESSAGE = ENTRANCE + "/Taglet";    //$NON-NLS-1$
+    public static final String ENTRANCE = "lang/maven";    // $NON-NLS-1$
+    public static final String TAGLET_MESSAGE = ENTRANCE + "/Taglet";    // $NON-NLS-1$
 }

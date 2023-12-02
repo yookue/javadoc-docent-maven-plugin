@@ -55,8 +55,8 @@ import com.yookue.mavenplugin.javadocdocent.util.ResourceBundleUtils;
  */
 @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue", "JavadocDeclaration", "JavadocLinkAsPlainText"})
 public class ReferenceTaglet extends AbstractBlockTaglet {
-    private static final String TAG_NAME = "reference";    //$NON-NLS-1$
-    private static final String TAG_TITLE = "Reference:";    //$NON-NLS-1$
+    private static final String TAG_NAME = "reference";    // $NON-NLS-1$
+    private static final String TAG_TITLE = "Reference:";    // $NON-NLS-1$
 
     /**
      * {@inheritDoc}
@@ -91,7 +91,7 @@ public class ReferenceTaglet extends AbstractBlockTaglet {
         if (!tbody.hasContent()) {
             return null;
         }
-        String title = ResourceBundleUtils.getTagletMessage(JavadocDocletUtils.getHtmlDocletLocale(), "Taglet.reference", TAG_TITLE);    //$NON-NLS-1$
+        String title = ResourceBundleUtils.getTagletMessage(JavadocDocletUtils.getHtmlDocletLocale(), "Taglet.reference", TAG_TITLE);    // $NON-NLS-1$
         ContentBuilder builder = JavadocContentUtils.dtSpanDdTable(title, tbody, TAG_NAME);
         return builder == null ? null : builder.toString();
     }

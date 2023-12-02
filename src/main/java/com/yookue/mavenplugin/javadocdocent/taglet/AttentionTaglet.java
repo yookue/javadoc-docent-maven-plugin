@@ -55,9 +55,9 @@ import com.yookue.mavenplugin.javadocdocent.util.ResourceBundleUtils;
  */
 @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})
 public class AttentionTaglet extends AbstractBlockTaglet {
-    private static final String TAG_NAME = "attention";    //$NON-NLS-1$
-    private static final String TAG_TITLE = "Attention:";    //$NON-NLS-1$
-    private static final String TR_TEMPLATE = "<tr><td style=\"color:#fff;background-color:#e55957\">%s</td></tr>";    //$NON-NLS-1$
+    private static final String TAG_NAME = "attention";    // $NON-NLS-1$
+    private static final String TAG_TITLE = "Attention:";    // $NON-NLS-1$
+    private static final String TR_TEMPLATE = "<tr><td style=\"color:#fff;background-color:#e55957\">%s</td></tr>";    // $NON-NLS-1$
 
     /**
      * {@inheritDoc}
@@ -89,7 +89,7 @@ public class AttentionTaglet extends AbstractBlockTaglet {
         if (!tbody.hasContent()) {
             return null;
         }
-        String title = ResourceBundleUtils.getTagletMessage(JavadocDocletUtils.getHtmlDocletLocale(), "Taglet.attention", TAG_TITLE);    //$NON-NLS-1$
+        String title = ResourceBundleUtils.getTagletMessage(JavadocDocletUtils.getHtmlDocletLocale(), "Taglet.attention", TAG_TITLE);    // $NON-NLS-1$
         ContentBuilder builder = JavadocContentUtils.dtSpanDdTable(title, tbody, TAG_NAME);
         return builder == null ? null : builder.toString();
     }

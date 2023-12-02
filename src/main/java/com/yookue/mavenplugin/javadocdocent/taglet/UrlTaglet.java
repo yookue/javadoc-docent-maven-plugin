@@ -43,7 +43,7 @@ import com.yookue.mavenplugin.javadocdocent.util.JavadocContentUtils;
  */
 @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})
 public class UrlTaglet extends AbstractInlineTaglet {
-    private static final String TAG_NAME = "url";    //$NON-NLS-1$
+    private static final String TAG_NAME = "url";    // $NON-NLS-1$
 
     /**
      * {@inheritDoc}

@@ -35,14 +35,14 @@ import org.apache.maven.plugins.annotations.Mojo;
 @Mojo(name = "help", requiresProject = false, threadSafe = true)
 @SuppressWarnings("unused")
 public class HelpMojo extends AbstractMojo {
-    private static final String HELP_FILE_PATH = "META-INF/usage.txt";    //$NON-NLS-1$
+    private static final String HELP_FILE_PATH = "META-INF/usage.txt";    // $NON-NLS-1$
 
     @Override
     public void execute() throws MojoExecutionException {
         try {
             String content = IOUtils.resourceToString(HELP_FILE_PATH, StandardCharsets.UTF_8, getClass().getClassLoader());
             if (StringUtils.isNotBlank(content)) {
-                content = RegExUtils.replaceAll(content, "\\r\\n", System.lineSeparator());    //$NON-NLS-1$
+                content = RegExUtils.replaceAll(content, "\\r\\n", System.lineSeparator());    // $NON-NLS-1$
                 getLog().info(content);
             } else {
                 getLog().warn(String.format("Help file '%s' is missing", HELP_FILE_PATH));

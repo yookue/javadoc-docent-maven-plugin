@@ -49,7 +49,7 @@ public abstract class JavadocContentUtils {
             return null;
         }
         HtmlTree result = HtmlTree.A(href, new StringContent(StringUtils.defaultIfBlank(content, href)));
-        result.addAttr(HtmlAttr.TARGET, "_blank");    //$NON-NLS-1$
+        result.addAttr(HtmlAttr.TARGET, "_blank");    // $NON-NLS-1$
         return result;
     }
 
@@ -90,10 +90,10 @@ public abstract class JavadocContentUtils {
     }
 
     public static boolean hasRawHtml(@Nullable String text) {
-        return StringUtils.isNotBlank(text) && Pattern.compile("<[^>]+>").matcher(text).find();    //$NON-NLS-1$
+        return StringUtils.isNotBlank(text) && Pattern.compile("<[^>]+>").matcher(text).find();    // $NON-NLS-1$
     }
 
     public static String unquote(@Nullable String text) {
-        return RegExUtils.replaceAll(text, "^['\"`]|['\"`]$", StringUtils.EMPTY);    //$NON-NLS-1$
+        return RegExUtils.replaceAll(text, "^['\"`]|['\"`]$", StringUtils.EMPTY);    // $NON-NLS-1$
     }
 }

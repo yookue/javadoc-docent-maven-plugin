@@ -56,9 +56,9 @@ import com.yookue.mavenplugin.javadocdocent.util.ResourceBundleUtils;
  */
 @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue", "JavadocDeclaration", "JavadocLinkAsPlainText"})
 public class TodoTaglet extends AbstractBlockTaglet {
-    private static final String TAG_NAME = "todo";    //$NON-NLS-1$
-    private static final String TAG_TITLE = "To Do:";    //$NON-NLS-1$
-    private static final String TR_TEMPLATE = "<tr><td style=\"color:#fff;background-color:#69c2fe\">%s</td></tr>";    //$NON-NLS-1$
+    private static final String TAG_NAME = "todo";    // $NON-NLS-1$
+    private static final String TAG_TITLE = "To Do:";    // $NON-NLS-1$
+    private static final String TR_TEMPLATE = "<tr><td style=\"color:#fff;background-color:#69c2fe\">%s</td></tr>";    // $NON-NLS-1$
 
     /**
      * {@inheritDoc}
@@ -90,7 +90,7 @@ public class TodoTaglet extends AbstractBlockTaglet {
         if (!tbody.hasContent()) {
             return null;
         }
-        String title = ResourceBundleUtils.getTagletMessage(JavadocDocletUtils.getHtmlDocletLocale(), "Taglet.todo", TAG_TITLE);    //$NON-NLS-1$
+        String title = ResourceBundleUtils.getTagletMessage(JavadocDocletUtils.getHtmlDocletLocale(), "Taglet.todo", TAG_TITLE);    // $NON-NLS-1$
         ContentBuilder builder = JavadocContentUtils.dtSpanDdTable(title, tbody, TAG_NAME);
         return builder == null ? null : builder.toString();
     }
