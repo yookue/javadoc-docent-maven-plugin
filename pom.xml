@@ -219,14 +219,6 @@
         </profile>
     </profiles>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>sonatype</id>
-            <name>Sonatype Snapshot Repository</name>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
@@ -368,6 +360,14 @@
         <connection>scm:git:https://github.com/yookue/javadoc-docent-maven-plugin.git</connection>
         <developerConnection>scm:git:https://github.com/yookue/javadoc-docent-maven-plugin.git</developerConnection>
     </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype</id>
+            <name>Sonatype Snapshot Repository</name>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <issueManagement>
         <system>Github</system>
