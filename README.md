@@ -60,7 +60,7 @@ javadoc-docent-maven-plugin is a maven plugin, to support generating alternative
 
 ## Document
 
-- javadoc-docent-maven-plugin github: https://github.com/yookue/javadoc-docent-maven-plugin
+- Github: https://github.com/yookue/javadoc-docent-maven-plugin
 
 ## Requirement
 
