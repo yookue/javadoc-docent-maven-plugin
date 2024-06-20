@@ -22,7 +22,7 @@
 
     <groupId>com.yookue.mavenplugin</groupId>
     <artifactId>javadoc-docent-maven-plugin</artifactId>
-    <version>1.8.0</version>
+    <version>1.8.1</version>
     <packaging>maven-plugin</packaging>
 
     <name>${project.artifactId}</name>
@@ -48,7 +48,7 @@
         <project.build.resourceEncoding>${file.encoding}</project.build.resourceEncoding>
         <project.reporting.outputEncoding>${file.encoding}</project.reporting.outputEncoding>
 
-        <commons-io.version>2.15.0</commons-io.version>
+        <commons-io.version>2.16.1</commons-io.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <jsr305.version>3.0.2</jsr305.version>
         <maven-core.version>3.8.5</maven-core.version>
@@ -63,7 +63,7 @@
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.14</nexus-staging-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -384,7 +384,7 @@
 
     <developers>
         <developer>
-            <name>${project.organization.name}</name>
+            <name>Yookue Ltd</name>
         </developer>
         <developer>
             <id>davidhsing</id>
@@ -396,8 +396,8 @@
             <roles>
                 <role>developer</role>
             </roles>
-            <organization>${project.organization.name}</organization>
-            <organizationUrl>${project.organization.url}</organizationUrl>
+            <organization>Yookue Ltd</organization>
+            <organizationUrl>https://yookue.com</organizationUrl>
             <timezone>China/Beijing</timezone>
         </developer>
     </developers>
