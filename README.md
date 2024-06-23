@@ -1,9 +1,11 @@
 # Javadoc Docent Maven Plugin
+
 javadoc-docent-maven-plugin is a maven plugin, to support generating alternative javadoc annotations, with multilingual capability.
 
 ## Quickstart
 
 - Configure maven `pom.xml` under plugin `maven-javadoc-plugin`
+
 ```xml
 <project>
     <build>
@@ -68,8 +70,13 @@ javadoc-docent-maven-plugin is a maven plugin, to support generating alternative
 
 ## License
 
-This code is under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+This project is under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+
 See the `NOTICE.txt` file for required notices and attributions.
+
+## Donation
+
+You like this package? Then [donate to Yookue](https://yookue.com/public/donate) to support the development.
 
 ## Website
 
