@@ -17,7 +17,7 @@
 package com.yookue.mavenplugin.javadocdocent.taglet;
 
 
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 import com.sun.javadoc.Tag;
 import com.sun.tools.doclets.Taglet;
 

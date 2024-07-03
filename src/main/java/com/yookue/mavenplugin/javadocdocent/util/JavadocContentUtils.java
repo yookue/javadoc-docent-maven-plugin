@@ -18,7 +18,7 @@ package com.yookue.mavenplugin.javadocdocent.util;
 
 
 import java.util.regex.Pattern;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 import org.apache.commons.lang3.RegExUtils;
 import org.apache.commons.lang3.StringUtils;
 import com.sun.tools.doclets.formats.html.markup.ContentBuilder;
