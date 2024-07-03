@@ -189,6 +189,9 @@
                     <notimestamp>true</notimestamp>
                     <quiet>true</quiet>
                     <skip>false</skip>
+                    <additionalJOptions>
+                        <additionalJOption>-J-Duser.language=en</additionalJOption>
+                    </additionalJOptions>
                     <archive>
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
