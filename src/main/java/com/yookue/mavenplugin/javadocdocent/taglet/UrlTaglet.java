@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2024 Yookue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,14 @@
 package com.yookue.mavenplugin.javadocdocent.taglet;
 
 
-import java.util.Map;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.lang.model.element.Element;
+import jakarta.annotation.Nonnull;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import com.sun.javadoc.Tag;
-import com.sun.tools.doclets.Taglet;
-import com.sun.tools.doclets.formats.html.markup.HtmlTree;
+import com.sun.source.doctree.DocTree;
+import com.sun.source.doctree.UnknownInlineTagTree;
 import com.yookue.mavenplugin.javadocdocent.util.JavadocContentUtils;
 
 
@@ -58,24 +58,23 @@ public class UrlTaglet extends AbstractInlineTaglet {
      */
     @Override
     @SuppressWarnings("DuplicatedCode")
-    public String toString(@Nullable Tag tag) {
-        if (tag == null || StringUtils.isBlank(tag.text())) {
+    public String toString(@Nonnull List<? extends DocTree> tags, @Nonnull Element element) {
+        if (tags.isEmpty()) {
             return null;
         }
-        String[] args = StringUtils.split(tag.text(), StringUtils.SPACE);
-        String href = JavadocContentUtils.unquote(ArrayUtils.get(args, 0));
-        String content = JavadocContentUtils.unquote(ArrayUtils.get(args, 1));
-        HtmlTree result = JavadocContentUtils.aOpeningBlank(href, content);
-        return result == null ? null : result.toString();
-    }
-
-    /**
-     * Register this taglet
-     *
-     * @param taglets the map to register this taglet to
-     */
-    public static void register(@Nonnull Map<String, Taglet> taglets) {
-        taglets.remove(TAG_NAME);
-        taglets.put(TAG_NAME, new UrlTaglet());
+        List<String> result = new ArrayList<>();
+        for (DocTree tag : tags) {
+            if (!(tag instanceof UnknownInlineTagTree tree)) {
+                continue;
+            }
+            String[] args = StringUtils.split(tree.getContent().toString(), StringUtils.SPACE);
+            String href = JavadocContentUtils.unquote(ArrayUtils.get(args, 0));
+            String content = JavadocContentUtils.unquote(ArrayUtils.get(args, 1));
+            String a = JavadocContentUtils.aOpeningBlank(href, content);
+            if (StringUtils.isNotBlank(a)) {
+                result.add(a);
+            }
+        }
+        return result.isEmpty() ? null : StringUtils.join(result, StringUtils.EMPTY);
     }
 }

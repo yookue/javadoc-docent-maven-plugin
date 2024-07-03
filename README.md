@@ -52,7 +52,7 @@ javadoc-docent-maven-plugin is a maven plugin, to support generating alternative
 - Supported javadoc annotations are:
 
 | Annotation | Taglet Type | Usage                         |
-| ---------- | ----------- | ----------------------------- |
+|------------|-------------|-------------------------------|
 | @attention | block       | @attention "content"          |
 | @dtdd      | inline      | {@dtdd "title" "content"}     |
 | @reference | block       | @reference "href" ["content"] |
@@ -66,7 +66,7 @@ javadoc-docent-maven-plugin is a maven plugin, to support generating alternative
 
 ## Requirement
 
-- jdk 1.8+
+- jdk 17+
 
 ## License
 

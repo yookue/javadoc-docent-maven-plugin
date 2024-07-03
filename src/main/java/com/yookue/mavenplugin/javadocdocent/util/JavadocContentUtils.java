@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2024 Yookue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,80 +17,51 @@
 package com.yookue.mavenplugin.javadocdocent.util;
 
 
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 import org.apache.commons.lang3.RegExUtils;
 import org.apache.commons.lang3.StringUtils;
-import com.sun.tools.doclets.formats.html.markup.ContentBuilder;
-import com.sun.tools.doclets.formats.html.markup.HtmlAttr;
-import com.sun.tools.doclets.formats.html.markup.HtmlStyle;
-import com.sun.tools.doclets.formats.html.markup.HtmlTree;
-import com.sun.tools.doclets.formats.html.markup.RawHtml;
-import com.sun.tools.doclets.formats.html.markup.StringContent;
-import com.sun.tools.doclets.internal.toolkit.Content;
 
 
 /**
- * Utilities for {@link com.sun.tools.doclets.internal.toolkit.Content}
+ * Utilities for javadoc content
  *
  * @author David Hsing
- * @see com.sun.tools.doclets.internal.toolkit.Content
  */
 @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})
 public abstract class JavadocContentUtils {
+    private static final String A_BLANK = "<a href=\"%s\" target=\"_blank\">%s</a>";    // $NON-NLS-1$
+    private static final String DT_DD = "<dt>%s</dt><dd>%s</dd>";    // $NON-NLS-1$
+    private static final String SPAN_SIMPLE = "<span class=\"simpleTagLabel\">%s</span>";    // $NON-NLS-1$
+    private static final String TABLE = "<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\">%s</table>";    // $NON-NLS-1$
+    private static final String TR_TD = "<tr><td>%s</td></tr>";    // $NON-NLS-1$
+
     @Nullable
-    public static HtmlTree aOpeningBlank(@Nullable String href) {
+    public static String aOpeningBlank(@Nullable String href) {
         return aOpeningBlank(href, null);
     }
 
     @Nullable
-    public static HtmlTree aOpeningBlank(@Nullable String href, @Nullable String content) {
-        if (StringUtils.isBlank(href)) {
+    public static String aOpeningBlank(@Nullable String href, @Nullable String content) {
+        return StringUtils.isBlank(href) ? null : String.format(A_BLANK, HtmlTreeUtils.encodeUrl(href), StringUtils.defaultIfBlank(content, href));
+    }
+
+    @Nullable
+    public static String dtDd(@Nullable String dtTitle, @Nullable String ddContent) {
+        return StringUtils.isAllBlank(dtTitle, ddContent) ? null : String.format(DT_DD, StringUtils.defaultString(dtTitle), StringUtils.defaultString(ddContent));
+    }
+
+    @Nullable
+    public static String dtSpanDdTable(@Nullable String dtTitle, @Nullable String tabSubset) {
+        if (StringUtils.isAllBlank(dtTitle, tabSubset)) {
             return null;
         }
-        HtmlTree result = HtmlTree.A(href, new StringContent(StringUtils.defaultIfBlank(content, href)));
-        result.addAttr(HtmlAttr.TARGET, "_blank");    // $NON-NLS-1$
-        return result;
+        return dtDd(String.format(SPAN_SIMPLE, StringUtils.defaultString(dtTitle)), String.format(TABLE, StringUtils.defaultString(tabSubset)));
     }
 
     @Nullable
-    public static ContentBuilder dtDd(@Nullable String dtTitle, @Nullable String ddContent) {
-        if (StringUtils.isAllBlank(dtTitle, ddContent)) {
-            return null;
-        }
-        ContentBuilder result = new ContentBuilder();
-        Content title = hasRawHtml(dtTitle) ? new RawHtml(dtTitle) : new StringContent(StringUtils.defaultString(dtTitle));
-        Content content = hasRawHtml(ddContent) ? new RawHtml(ddContent) : new StringContent(StringUtils.defaultString(ddContent));
-        result.addContent(HtmlTree.DT(title));
-        result.addContent(HtmlTree.DD(content));
-        return result;
-    }
-
-    @Nullable
-    public static ContentBuilder dtSpanDdTable(@Nullable String dtTitle, @Nullable Content tabSubset) {
-        return dtSpanDdTable(dtTitle, tabSubset, null);
-    }
-
-    @Nullable
-    public static ContentBuilder dtSpanDdTable(@Nullable String dtTitle, @Nullable Content tabSubset, @Nullable String tabSummary) {
-        if (tabSubset == null || tabSubset.isEmpty()) {
-            return null;
-        }
-        ContentBuilder result = new ContentBuilder();
-        Content title = hasRawHtml(dtTitle) ? new RawHtml(dtTitle) : new StringContent(StringUtils.defaultString(dtTitle));
-        result.addContent(HtmlTree.DT(HtmlTree.SPAN(HtmlStyle.simpleTagLabel, title)));
-        result.addContent(HtmlTree.DD(HtmlTree.TABLE(null, 0, 2, 0, StringUtils.defaultString(tabSummary), tabSubset)));
-        return result;
-    }
-
-    @Nullable
-    public static HtmlTree trTdAOpeningBlank(@Nullable String href, @Nullable String content) {
-        HtmlTree a = aOpeningBlank(href, content);
-        return a == null ? null : HtmlTree.TR(HtmlTree.TD(a));
-    }
-
-    public static boolean hasRawHtml(@Nullable String text) {
-        return StringUtils.isNotBlank(text) && Pattern.compile("<[^>]+>").matcher(text).find();    // $NON-NLS-1$
+    public static String trTdAOpeningBlank(@Nullable String href, @Nullable String text) {
+        String a = aOpeningBlank(href, text);
+        return StringUtils.isBlank(a) ? null : String.format(TR_TD, a);
     }
 
     public static String unquote(@Nullable String text) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2024 Yookue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,15 +17,12 @@
 package com.yookue.mavenplugin.javadocdocent.taglet;
 
 
-import javax.annotation.Nullable;
-import com.sun.javadoc.Tag;
-
-
 /**
  * An abstract taglet that representing block tags
  *
  * @author David Hsing
  */
+@SuppressWarnings("unused")
 public abstract class AbstractBlockTaglet extends AbstractBaseTaglet {
     /**
      * {@inheritDoc}
@@ -33,13 +30,5 @@ public abstract class AbstractBlockTaglet extends AbstractBaseTaglet {
     @Override
     public boolean isInlineTag() {
         return false;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String toString(@Nullable Tag tag) {
-        return tag == null ? null : toString(new Tag[]{tag});
     }
 }

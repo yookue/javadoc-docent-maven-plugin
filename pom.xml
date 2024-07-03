@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- * Copyright (c) 2021 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2024 Yookue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,13 +22,13 @@
 
     <groupId>com.yookue.mavenplugin</groupId>
     <artifactId>javadoc-docent-maven-plugin</artifactId>
-    <version>1.8.2</version>
+    <version>2.0.0</version>
     <packaging>maven-plugin</packaging>
 
     <name>${project.artifactId}</name>
     <description>Javadoc Docent for Maven Plugin</description>
     <url>https://github.com/yookue/javadoc-docent-maven-plugin</url>
-    <inceptionYear>2021</inceptionYear>
+    <inceptionYear>2024</inceptionYear>
 
     <organization>
         <name>Yookue Ltd</name>
@@ -36,7 +36,7 @@
     </organization>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <file.encoding>UTF-8</file.encoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -49,19 +49,19 @@
         <project.reporting.outputEncoding>${file.encoding}</project.reporting.outputEncoding>
 
         <commons-io.version>2.16.1</commons-io.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
-        <jsr305.version>3.0.2</jsr305.version>
-        <maven-core.version>3.8.5</maven-core.version>
-        <maven-plugin-annotations.version>3.6.4</maven-plugin-annotations.version>
-        <maven-plugin-api.version>3.8.5</maven-plugin-api.version>
+        <commons-lang3.version>3.14.0</commons-lang3.version>
+        <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
+        <lombok.version>1.18.32</lombok.version>
+        <maven-plugin-annotations.version>3.13.1</maven-plugin-annotations.version>
+        <maven-plugin-api.version>3.9.8</maven-plugin-api.version>
 
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
-        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
-        <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
-        <maven-javadoc-plugin.version>3.6.2</maven-javadoc-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <maven-install-plugin.version>3.1.2</maven-install-plugin.version>
+        <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
+        <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
         <maven-plugin-plugin.version>3.6.4</maven-plugin-plugin.version>
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
-        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
         <central-publishing-maven-plugin.version>0.5.0</central-publishing-maven-plugin.version>
     </properties>
@@ -78,49 +78,15 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>jsr305</artifactId>
-            <version>${jsr305.version}</version>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>${jakarta-annotation.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-core</artifactId>
-            <version>${maven-core.version}</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-io</groupId>
-                    <artifactId>commons-io</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>commons-lang3</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.google.inject</groupId>
-                    <artifactId>guice</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.maven.shared</groupId>
-                    <artifactId>maven-shared-utils</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.eclipse.sisu</groupId>
-                    <artifactId>org.eclipse.sisu.plexus</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.codehaus.plexus</groupId>
-                    <artifactId>plexus-classworlds</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.codehaus.plexus</groupId>
-                    <artifactId>plexus-utils</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.plugin-tools</groupId>
@@ -176,49 +142,6 @@
         </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>oracle-jdk</id>
-            <activation>
-                <file>
-                    <exists>${java.home}/../lib/tools.jar</exists>
-                </file>
-            </activation>
-            <properties>
-                <tools.jar>${java.home}/../lib/tools.jar</tools.jar>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>com.sun</groupId>
-                    <artifactId>tools</artifactId>
-                    <version>${java.version}</version>
-                    <scope>system</scope>
-                    <systemPath>${tools.jar}</systemPath>
-                </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>mac-jdk</id>
-            <activation>
-                <file>
-                    <exists>${java.home}/../Classes/classes.jar</exists>
-                </file>
-            </activation>
-            <properties>
-                <tools.jar>${java.home}/../Classes/classes.jar</tools.jar>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>com.sun</groupId>
-                    <artifactId>tools</artifactId>
-                    <version>${java.version}</version>
-                    <scope>system</scope>
-                    <systemPath>${tools.jar}</systemPath>
-                </dependency>
-            </dependencies>
-        </profile>
-    </profiles>
-
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
@@ -231,9 +154,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>${maven-install-plugin.version}</version>
-                <configuration>
-                    <createChecksum>true</createChecksum>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -278,8 +198,9 @@
                     <links>
                         <link>https://commons.apache.org/proper/commons-io/apidocs/</link>
                         <link>https://commons.apache.org/proper/commons-lang/apidocs/</link>
-                        <link>https://docs.oracle.com/javase/8/docs/jdk/api/javadoc/doclet/</link>
-                        <link>https://javadoc.io/doc/com.google.code.findbugs/jsr305/latest/</link>
+                        <!--
+                        <link>https://docs.oracle.com/en/java/javase/17/docs/api/jdk.javadoc/jdk/javadoc/doclet/</link>
+                        -->
                     </links>
                     <taglets>
                         <taglet>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2024 Yookue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,18 +17,15 @@
 package com.yookue.mavenplugin.javadocdocent.taglet;
 
 
-import java.util.Map;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.lang.model.element.Element;
+import jakarta.annotation.Nonnull;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import com.sun.javadoc.Tag;
-import com.sun.tools.doclets.Taglet;
-import com.sun.tools.doclets.formats.html.markup.ContentBuilder;
-import com.sun.tools.doclets.formats.html.markup.HtmlTag;
-import com.sun.tools.doclets.formats.html.markup.HtmlTree;
+import com.sun.source.doctree.DocTree;
+import com.sun.source.doctree.UnknownBlockTagTree;
 import com.yookue.mavenplugin.javadocdocent.util.JavadocContentUtils;
-import com.yookue.mavenplugin.javadocdocent.util.JavadocDocletUtils;
 import com.yookue.mavenplugin.javadocdocent.util.ResourceBundleUtils;
 
 
@@ -70,39 +67,28 @@ public class ReferenceTaglet extends AbstractBlockTaglet {
      * {@inheritDoc}
      */
     @Override
-    @SuppressWarnings("ConstantConditions")
-    public String toString(@Nullable Tag[] tags) {
-        if (ArrayUtils.isEmpty(tags)) {
+    @SuppressWarnings("DuplicatedCode")
+    public String toString(@Nonnull List<? extends DocTree> tags, @Nonnull Element element) {
+        if (tags.isEmpty()) {
             return null;
         }
-        HtmlTree tbody = new HtmlTree(HtmlTag.TBODY);
-        for (Tag tag : tags) {
-            if (tag == null || StringUtils.isBlank(tag.text())) {
+        List<String> tbody = new ArrayList<>();
+        for (DocTree tag : tags) {
+            if (!(tag instanceof UnknownBlockTagTree tree)) {
                 continue;
             }
-            String[] args = StringUtils.split(tag.text(), StringUtils.SPACE);
+            String[] args = StringUtils.split(tree.getContent().toString(), StringUtils.SPACE);
             String href = JavadocContentUtils.unquote(ArrayUtils.get(args, 0));
             String content = JavadocContentUtils.unquote(ArrayUtils.get(args, 1));
-            HtmlTree tr = JavadocContentUtils.trTdAOpeningBlank(href, content);
-            if (tr != null) {
-                tbody.addContent(tr);
+            String tr = JavadocContentUtils.trTdAOpeningBlank(href, content);
+            if (StringUtils.isNotBlank(tr)) {
+                tbody.add(tr);
             }
         }
-        if (!tbody.hasContent()) {
+        if (tbody.isEmpty()) {
             return null;
         }
-        String title = ResourceBundleUtils.getTagletMessage(JavadocDocletUtils.getHtmlDocletLocale(), "Taglet.reference", TAG_TITLE);    // $NON-NLS-1$
-        ContentBuilder builder = JavadocContentUtils.dtSpanDdTable(title, tbody, TAG_NAME);
-        return builder == null ? null : builder.toString();
-    }
-
-    /**
-     * Register this taglet
-     *
-     * @param taglets the map to register this taglet to
-     */
-    public static void register(@Nonnull Map<String, Taglet> taglets) {
-        taglets.remove(TAG_NAME);
-        taglets.put(TAG_NAME, new ReferenceTaglet());
+        String dtTitle = ResourceBundleUtils.getTagletMessage(super.getLocale(), "Taglet.reference", TAG_TITLE);    // $NON-NLS-1$
+        return JavadocContentUtils.dtSpanDdTable(dtTitle, StringUtils.join(tbody, StringUtils.EMPTY));
     }
 }
