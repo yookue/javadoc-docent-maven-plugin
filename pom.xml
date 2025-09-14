@@ -212,7 +212,22 @@
                     </links>
                     <taglets>
                         <taglet>
+                            <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.AttentionTaglet</tagletClass>
+                        </taglet>
+                        <taglet>
+                            <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.DtddTaglet</tagletClass>
+                        </taglet>
+                        <taglet>
                             <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.ReferenceTaglet</tagletClass>
+                        </taglet>
+                        <taglet>
+                            <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.TaskTaglet</tagletClass>
+                        </taglet>
+                        <taglet>
+                            <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.UrlTaglet</tagletClass>
+                        </taglet>
+                        <taglet>
+                            <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.WarningTaglet</tagletClass>
                         </taglet>
                     </taglets>
                     <tagletArtifact>

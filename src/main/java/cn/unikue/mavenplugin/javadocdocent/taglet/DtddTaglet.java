@@ -29,10 +29,10 @@ import cn.unikue.mavenplugin.javadocdocent.util.JavadocContentUtils;
 
 
 /**
- * An inline taglet that representing {@code {@dtdd}} tag
+ * An inline taglet that representing {@code `@dtdd`} tag
  *
  * <pre><code>
- *     {&#64;dtdd "title" "content"}
+ *     {&#64;dtdd "Title" "Content"}
  * </code></pre>
  * represents
  * <pre><code>
@@ -45,8 +45,10 @@ import cn.unikue.mavenplugin.javadocdocent.util.JavadocContentUtils;
  * </code></pre>
  *
  * @author David Hsing
+ *
+ * {@dtdd "Title" "Content"}
  */
-@SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})
+@SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue", "JavadocDeclaration"})
 public class DtddTaglet extends AbstractInlineTaglet {
     private static final String TAG_NAME = "dtdd";    // $NON-NLS-1$
 

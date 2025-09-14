@@ -29,7 +29,9 @@ import cn.unikue.mavenplugin.javadocdocent.util.JavadocContentUtils;
 
 
 /**
- * An inline taglet that representing {@code {@url}} tag
+ * An inline taglet that representing {@code `@url`} tag
+ * <p>
+ * For example: {@url "https://unikue.cn" "unikue.cn"}
  *
  * <pre><code>
  *     {&#64;url "href" ["content"]}
@@ -41,7 +43,7 @@ import cn.unikue.mavenplugin.javadocdocent.util.JavadocContentUtils;
  *
  * @author David Hsing
  */
-@SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})
+@SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue", "JavadocDeclaration", "JavadocLinkAsPlainText"})
 public class UrlTaglet extends AbstractInlineTaglet {
     private static final String TAG_NAME = "url";    // $NON-NLS-1$
 

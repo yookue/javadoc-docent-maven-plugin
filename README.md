@@ -7,6 +7,7 @@ javadoc-docent-maven-plugin is a maven plugin, to support generating alternative
 - Configure maven `pom.xml` under plugin `maven-javadoc-plugin`
 
 ```xml
+
 <project>
     <build>
         <plugins>
@@ -26,7 +27,7 @@ javadoc-docent-maven-plugin is a maven plugin, to support generating alternative
                             <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.ReferenceTaglet</tagletClass>
                         </taglet>
                         <taglet>
-                            <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.TodoTaglet</tagletClass>
+                            <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.TaskTagletcn.unikue.mavenplugin.javadocdocent.taglet.TaskTaglet</tagletClass>
                         </taglet>
                         <taglet>
                             <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.UrlTaglet</tagletClass>
@@ -56,7 +57,7 @@ javadoc-docent-maven-plugin is a maven plugin, to support generating alternative
 | @attention | block       | @attention "content"          |
 | @dtdd      | inline      | {@dtdd "title" "content"}     |
 | @reference | block       | @reference "href" ["content"] |
-| @todo      | block       | @todo "content"               |
+| @task      | block       | @task "content"               |
 | @url       | inline      | {&#64;url "href" ["content"]} |
 | @warning   | block       | @warning "content"            |
 

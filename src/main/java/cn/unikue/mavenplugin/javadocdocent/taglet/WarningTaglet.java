@@ -29,7 +29,7 @@ import cn.unikue.mavenplugin.javadocdocent.util.ResourceBundleUtils;
 
 
 /**
- * A block taglet that representing {@code @warning} tag
+ * A block taglet that representing {@code `@warning`} tag
  *
  * <pre><code>
  *     &#64;warning "content"
@@ -41,18 +41,20 @@ import cn.unikue.mavenplugin.javadocdocent.util.ResourceBundleUtils;
  *     &lt;/dt&gt;
  *     &lt;dd&gt;
  *         &lt;table border="0" cellpadding="2" cellspacing="0"&gt;
- *             &lt;tr&gt;&lt;td style="color:#fff;background-color:#f1c500"&gt;content&lt;/td&gt;&lt;/tr&gt;
+ *             &lt;tr&gt;&lt;td style="color:#fff;background-color:#faad14"&gt;content&lt;/td&gt;&lt;/tr&gt;
  *         &lt;/table&gt;
  *     &lt;/dd&gt;
  * </code></pre>
  *
  * @author David Hsing
+ *
+ * @warning "A @warning taglet"
  */
-@SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})
+@SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue", "JavadocDeclaration"})
 public class WarningTaglet extends AbstractBlockTaglet {
     private static final String TAG_NAME = "warning";    // $NON-NLS-1$
     private static final String TAG_TITLE = "Warning:";    // $NON-NLS-1$
-    private static final String TR_TEMPLATE = "<tr><td style=\"color:#fff;background-color:#f1c500\">%s</td></tr>";    // $NON-NLS-1$
+    private static final String TR_TEMPLATE = "<tr><td style=\"color:#fff;background-color:#faad14\">%s</td></tr>";    // $NON-NLS-1$
 
     /**
      * {@inheritDoc}

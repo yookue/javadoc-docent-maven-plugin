@@ -30,7 +30,7 @@ import cn.unikue.mavenplugin.javadocdocent.util.ResourceBundleUtils;
 
 
 /**
- * A block taglet that representing {@code @reference} tag
+ * A block taglet that representing {@code `@reference`} tag
  *
  * <pre><code>
  *     &#64;reference "href" ["content"]
@@ -48,7 +48,8 @@ import cn.unikue.mavenplugin.javadocdocent.util.ResourceBundleUtils;
  * </code></pre>
  *
  * @author David Hsing
- * @reference "https://github.com/Broele/ReferenceTaglet/"
+ *
+ * @reference "https://unikue.cn" "unikue.cn"
  */
 @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue", "JavadocDeclaration", "JavadocLinkAsPlainText"})
 public class ReferenceTaglet extends AbstractBlockTaglet {

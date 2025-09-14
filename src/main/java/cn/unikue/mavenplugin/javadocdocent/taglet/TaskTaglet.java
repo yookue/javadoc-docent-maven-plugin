@@ -29,31 +29,34 @@ import cn.unikue.mavenplugin.javadocdocent.util.ResourceBundleUtils;
 
 
 /**
- * A block taglet that representing {@code @todo} tag
+ * A block taglet that representing {@code `@task`} tag
  *
  * <pre><code>
- *     &#64;todo "content"
+ *     &#64;task "content"
  * </code></pre>
  * represents
  * <pre><code>
  *     &lt;dt&gt;
- *         &lt;span class="simpleTagLabel&gt;To Do:&lt;/span&gt;
+ *         &lt;span class="simpleTagLabel&gt;Task:&lt;/span&gt;
  *     &lt;/dt&gt;
  *     &lt;dd&gt;
  *         &lt;table border="0" cellpadding="2" cellspacing="0"&gt;
- *             &lt;tr&gt;&lt;td style="color:#fff;background-color:#69c2fe"&gt;content&lt;/td&gt;&lt;/tr&gt;
+ *             &lt;tr&gt;&lt;td style="color:#fff;background-color:#1677ff"&gt;content&lt;/td&gt;&lt;/tr&gt;
  *         &lt;/table&gt;
  *     &lt;/dd&gt;
  * </code></pre>
  *
  * @author David Hsing
+ *
  * @reference "https://docs.oracle.com/javase/8/docs/technotes/guides/javadoc/taglet/ToDoTaglet.java"
+ *
+ * @task "A @task taglet"
  */
 @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue", "JavadocDeclaration", "JavadocLinkAsPlainText"})
-public class TodoTaglet extends AbstractBlockTaglet {
-    private static final String TAG_NAME = "todo";    // $NON-NLS-1$
-    private static final String TAG_TITLE = "To Do:";    // $NON-NLS-1$
-    private static final String TR_TEMPLATE = "<tr><td style=\"color:#fff;background-color:#69c2fe\">%s</td></tr>";    // $NON-NLS-1$
+public class TaskTaglet extends AbstractBlockTaglet {
+    private static final String TAG_NAME = "task";    // $NON-NLS-1$
+    private static final String TAG_TITLE = "Task:";    // $NON-NLS-1$
+    private static final String TR_TEMPLATE = "<tr><td style=\"color:#fff;background-color:#1677ff\">%s</td></tr>";    // $NON-NLS-1$
 
     /**
      * {@inheritDoc}
@@ -85,7 +88,7 @@ public class TodoTaglet extends AbstractBlockTaglet {
         if (tbody.isEmpty()) {
             return null;
         }
-        String dtTitle = ResourceBundleUtils.getTagletMessage(super.getLocale(), "Taglet.todo", TAG_TITLE);    // $NON-NLS-1$
+        String dtTitle = ResourceBundleUtils.getTagletMessage(super.getLocale(), "Taglet.task", TAG_TITLE);    // $NON-NLS-1$
         return JavadocContentUtils.dtSpanDdTable(dtTitle, StringUtils.join(tbody, StringUtils.EMPTY));
     }
 }

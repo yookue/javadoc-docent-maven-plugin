@@ -41,14 +41,16 @@ import cn.unikue.mavenplugin.javadocdocent.util.ResourceBundleUtils;
  *     &lt;/dt&gt;
  *     &lt;dd&gt;
  *         &lt;table border="0" cellpadding="2" cellspacing="0"&gt;
- *             &lt;tr&gt;&lt;td style="color:#fff;background-color:#e55957"&gt;content&lt;/td&gt;&lt;/tr&gt;
+ *             &lt;tr&gt;&lt;td style="color:#fff;background-color:#ff4d4f"&gt;content&lt;/td&gt;&lt;/tr&gt;
  *         &lt;/table&gt;
  *     &lt;/dd&gt;
  * </code></pre>
  *
  * @author David Hsing
+ *
+ * @attention "A @attention taglet"
  */
-@SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})
+@SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue", "JavadocDeclaration"})
 public class AttentionTaglet extends AbstractBlockTaglet {
     private static final String TAG_NAME = "attention";    // $NON-NLS-1$
     private static final String TAG_TITLE = "Attention:";    // $NON-NLS-1$
