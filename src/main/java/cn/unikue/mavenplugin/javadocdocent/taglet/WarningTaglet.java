@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2023 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,46 +14,45 @@
  * limitations under the License.
  */
 
-package com.yookue.mavenplugin.javadocdocent.taglet;
+package cn.unikue.mavenplugin.javadocdocent.taglet;
 
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.lang.model.element.Element;
 import jakarta.annotation.Nonnull;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import com.sun.source.doctree.DocTree;
 import com.sun.source.doctree.UnknownBlockTagTree;
-import com.yookue.mavenplugin.javadocdocent.util.JavadocContentUtils;
-import com.yookue.mavenplugin.javadocdocent.util.ResourceBundleUtils;
+import cn.unikue.mavenplugin.javadocdocent.util.JavadocContentUtils;
+import cn.unikue.mavenplugin.javadocdocent.util.ResourceBundleUtils;
 
 
 /**
- * A block taglet that representing {@code @reference} tag
+ * A block taglet that representing {@code @warning} tag
  *
  * <pre><code>
- *     &#64;reference "href" ["content"]
+ *     &#64;warning "content"
  * </code></pre>
  * represents
  * <pre><code>
  *     &lt;dt&gt;
- *         &lt;span class="simpleTagLabel&gt;Reference:&lt;/span&gt;
+ *         &lt;span class="simpleTagLabel&gt;Warning:&lt;/span&gt;
  *     &lt;/dt&gt;
  *     &lt;dd&gt;
  *         &lt;table border="0" cellpadding="2" cellspacing="0"&gt;
- *             &lt;tr&gt;&lt;td&gt;&lt;a href="href" target="_blank"&gt;content&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+ *             &lt;tr&gt;&lt;td style="color:#fff;background-color:#f1c500"&gt;content&lt;/td&gt;&lt;/tr&gt;
  *         &lt;/table&gt;
  *     &lt;/dd&gt;
  * </code></pre>
  *
  * @author David Hsing
- * @reference "https://github.com/Broele/ReferenceTaglet/"
  */
-@SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue", "JavadocDeclaration", "JavadocLinkAsPlainText"})
-public class ReferenceTaglet extends AbstractBlockTaglet {
-    private static final String TAG_NAME = "reference";    // $NON-NLS-1$
-    private static final String TAG_TITLE = "Reference:";    // $NON-NLS-1$
+@SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})
+public class WarningTaglet extends AbstractBlockTaglet {
+    private static final String TAG_NAME = "warning";    // $NON-NLS-1$
+    private static final String TAG_TITLE = "Warning:";    // $NON-NLS-1$
+    private static final String TR_TEMPLATE = "<tr><td style=\"color:#fff;background-color:#f1c500\">%s</td></tr>";    // $NON-NLS-1$
 
     /**
      * {@inheritDoc}
@@ -77,18 +76,15 @@ public class ReferenceTaglet extends AbstractBlockTaglet {
             if (!(tag instanceof UnknownBlockTagTree tree)) {
                 continue;
             }
-            String[] args = StringUtils.split(tree.getContent().toString(), StringUtils.SPACE);
-            String href = JavadocContentUtils.unquote(ArrayUtils.get(args, 0));
-            String content = JavadocContentUtils.unquote(ArrayUtils.get(args, 1));
-            String tr = JavadocContentUtils.trTdAOpeningBlank(href, content);
-            if (StringUtils.isNotBlank(tr)) {
-                tbody.add(tr);
+            String content = JavadocContentUtils.unquote(tree.getContent().toString());
+            if (StringUtils.isNotBlank(content)) {
+                tbody.add(String.format(TR_TEMPLATE, content));
             }
         }
         if (tbody.isEmpty()) {
             return null;
         }
-        String dtTitle = ResourceBundleUtils.getTagletMessage(super.getLocale(), "Taglet.reference", TAG_TITLE);    // $NON-NLS-1$
+        String dtTitle = ResourceBundleUtils.getTagletMessage(super.getLocale(), "Taglet.warning", TAG_TITLE);    // $NON-NLS-1$
         return JavadocContentUtils.dtSpanDdTable(dtTitle, StringUtils.join(tbody, StringUtils.EMPTY));
     }
 }

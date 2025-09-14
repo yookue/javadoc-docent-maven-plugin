@@ -17,26 +17,26 @@ javadoc-docent-maven-plugin is a maven plugin, to support generating alternative
                 <configuration>
                     <taglets>
                         <taglet>
-                            <tagletClass>com.yookue.mavenplugin.javadocdocent.taglet.AttentionTaglet</tagletClass>
+                            <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.AttentionTaglet</tagletClass>
                         </taglet>
                         <taglet>
-                            <tagletClass>com.yookue.mavenplugin.javadocdocent.taglet.DtddTaglet</tagletClass>
+                            <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.DtddTaglet</tagletClass>
                         </taglet>
                         <taglet>
-                            <tagletClass>com.yookue.mavenplugin.javadocdocent.taglet.ReferenceTaglet</tagletClass>
+                            <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.ReferenceTaglet</tagletClass>
                         </taglet>
                         <taglet>
-                            <tagletClass>com.yookue.mavenplugin.javadocdocent.taglet.TodoTaglet</tagletClass>
+                            <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.TodoTaglet</tagletClass>
                         </taglet>
                         <taglet>
-                            <tagletClass>com.yookue.mavenplugin.javadocdocent.taglet.UrlTaglet</tagletClass>
+                            <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.UrlTaglet</tagletClass>
                         </taglet>
                         <taglet>
-                            <tagletClass>com.yookue.mavenplugin.javadocdocent.taglet.WarningTaglet</tagletClass>
+                            <tagletClass>cn.unikue.mavenplugin.javadocdocent.taglet.WarningTaglet</tagletClass>
                         </taglet>
                     </taglets>
                     <tagletArtifact>
-                        <groupId>com.yookue.mavenplugin</groupId>
+                        <groupId>cn.unikue.mavenplugin</groupId>
                         <artifactId>javadoc-docent-maven-plugin</artifactId>
                         <version>LATEST</version>
                     </tagletArtifact>
@@ -62,7 +62,7 @@ javadoc-docent-maven-plugin is a maven plugin, to support generating alternative
 
 ## Document
 
-- Github: https://github.com/yookue/javadoc-docent-maven-plugin
+- Github: https://github.com/unikueltd/javadoc-docent-maven-plugin
 
 ## Requirement
 
@@ -76,8 +76,8 @@ See the `NOTICE.txt` file for required notices and attributions.
 
 ## Donation
 
-You like this package? Then [donate to Yookue](https://yookue.com/public/donate) to support the development.
+You like this package? Then [donate to Unikue](https://unikue.cn/donation) to support the development.
 
 ## Website
 
-- Yookue: https://yookue.com
+- Unikue: https://unikue.cn

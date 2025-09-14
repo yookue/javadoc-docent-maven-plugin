@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2023 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,21 @@
  * limitations under the License.
  */
 
-package com.yookue.mavenplugin.javadocdocent.constant;
+package cn.unikue.mavenplugin.javadocdocent.taglet;
 
 
 /**
- * Constants for {@link java.util.ResourceBundle}
+ * An abstract taglet that representing block tags
  *
  * @author David Hsing
- * @see java.util.ResourceBundle
  */
 @SuppressWarnings("unused")
-public abstract class ResourceBundleConst {
-    public static final String ENTRANCE = "lang/maven";    // $NON-NLS-1$
-    public static final String TAGLET_MESSAGE = ENTRANCE + "/Taglet";    // $NON-NLS-1$
+public abstract class AbstractBlockTaglet extends AbstractBaseTaglet {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isInlineTag() {
+        return false;
+    }
 }
