@@ -22,7 +22,7 @@
 
     <groupId>cn.unikue.mavenplugin</groupId>
     <artifactId>javadoc-docent-maven-plugin</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.1</version>
     <packaging>maven-plugin</packaging>
 
     <name>${project.artifactId}</name>
@@ -48,22 +48,22 @@
         <project.build.resourceEncoding>${file.encoding}</project.build.resourceEncoding>
         <project.reporting.outputEncoding>${file.encoding}</project.reporting.outputEncoding>
 
-        <commons-io.version>2.20.0</commons-io.version>
-        <commons-lang3.version>3.17.0</commons-lang3.version>
-        <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
-        <lombok.version>1.18.38</lombok.version>
-        <maven-plugin-annotations.version>3.15.1</maven-plugin-annotations.version>
-        <maven-plugin-api.version>3.9.9</maven-plugin-api.version>
+        <commons-io.version>2.22.0</commons-io.version>
+        <commons-lang3.version>3.19.0</commons-lang3.version>
+        <jakarta-annotation.version>3.0.0</jakarta-annotation.version>
+        <lombok.version>1.18.46</lombok.version>
+        <maven-plugin-annotations.version>3.15.2</maven-plugin-annotations.version>
+        <maven-plugin-api.version>3.9.15</maven-plugin-api.version>
 
-        <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
         <maven-install-plugin.version>3.1.4</maven-install-plugin.version>
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
-        <maven-javadoc-plugin.version>3.11.3</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
         <maven-plugin-plugin.version>3.15.1</maven-plugin-plugin.version>
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
-        <central-publishing-maven-plugin.version>0.8.0</central-publishing-maven-plugin.version>
+        <central-publishing-maven-plugin.version>0.10.0</central-publishing-maven-plugin.version>
     </properties>
 
     <dependencies>
